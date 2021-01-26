@@ -34,7 +34,7 @@
 #ifndef LPH8731_3C_MC60_H
 #define LPH8731_3C_MC60_H
 
-#define _8_BIT_COLOR  1     //  0 - 12 bit color;   1 - 8 bit color;
+#define _8_BIT_COLOR  0     //  0 - 12 bit color;   1 - 8 bit color;
 
 //===============================================================
 //                     
@@ -68,27 +68,32 @@
 #endif
 
 //*************************************************************
-//ESP8266 NodeMCU v3 pin
-#define LCD_CS      5    //  D1
-#define LCD_RESET   4    //  D2
-#define LCD_RS      14   //  D5
-#define LCD_CLK     12   //  D6
-#define LCD_DATA    10   //  SD3
+
 
 //*************************************************************
+
+typedef struct{
+int RS;
+unsigned char data;
+}lcd_packet;
+
 
 class LPH8731_3C_MC60
 {
 private:
 
+  byte LCD_CS;
+  byte LCD_RESET;
+  byte LCD_RS;
   void fillTriangleA 	(char x1, char y1, char x2, char y2, char x3, char y3, int color); 
   void stringNum  	(char *str, int x, int y,  int t_color, int b_color, char zoom_width, char zoom_height, int rotation);
 
 public:
-
+  LPH8731_3C_MC60(byte pinCs, byte pinReset, byte pinRs);
   void reset 		(void);
   void begin 		(void);
-  void lcdSend 		(unsigned char RS, unsigned char data);
+  void lcdSend(lcd_packet pkt);
+  void lcdSendD(unsigned char data );
   void setArea 		(char x1, char x2, char y1, char y2);
   void fillScreen 	(unsigned int color);
   void white		(void);

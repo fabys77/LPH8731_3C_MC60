@@ -1,6 +1,6 @@
 # LPH8731_3C_MC60
 
-Assembled from pieces for ESP8266 on NodeMCU v3
+Assembled from pieces for ESP8266 on NodeMCU v3 /v0.9
 
 Screen from the phone Siemens MC60
 
@@ -25,3 +25,5 @@ Screen from the phone Siemens MC60
 	9 (LED K)    --      GND
 
 	10 (LED 2A)  --      +3.3 VDС
+
+FaByS fork: using SPI hardware instead of software SPI (it is faster!!)
