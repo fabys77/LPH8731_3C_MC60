@@ -34,7 +34,7 @@
 #ifndef LPH8731_3C_MC60_H
 #define LPH8731_3C_MC60_H
 
-#define _8_BIT_COLOR  0     //  0 - 12 bit color;   1 - 8 bit color;
+//#define _8_BIT_COLOR  0     //  0 - 12 bit color;   1 - 8 bit color;
 
 //===============================================================
 //                     
@@ -105,12 +105,12 @@ public:
   void setCharShadow 	(unsigned char symbol, char x, char y, int t_color, 		 char zoom_width, char zoom_height,  int rotation);
   void string  		(char *str, 	       int x,  int y,  int t_color, int b_color, char zoom_width, char zoom_height,  int rotation);
   void stringShadow 	(char *str, 	       int x,  int y,  int t_color,		 char zoom_width, char zoom_height,  int rotation);
-
   void drawLine 	(char x1, char y1, char x2, char y2, int color);
   void drawRect 	(char x1, char y1, char width, char height, char size, int color);
   void fillRect 	(char x1, char y1, char width, char height, 	       int color);
   void drawCircle 	(char xcenter, char ycenter, char rad, int color);
   void fillCircle 	(char xcenter, char ycenter, char rad, int color);
+  void drawRing 	(char xcenter, char ycenter, char rad_int, char rad_ext, int color, char chunk);
   void drawTriangle 	(char x1, char y1, char x2, char y2, char x3, char y3, int color);
   void fillTriangle 	(char x1, char y1, char x2, char y2, char x3, char y3, int color);
 

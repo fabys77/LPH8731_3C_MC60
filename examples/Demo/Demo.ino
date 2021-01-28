@@ -76,6 +76,17 @@ void setup ()
   lcd.white();
   lcd.fillTriangle(50, 5, 5, 70, 95, 70, 0); 
   delay(5000);
+  Serial.println("step12,5");
+  lcd.white();
+  for (char ii=0; ii<9; ii++){
+    lcd.drawRing(50, 40, 10, 20, 0, ii);
+    delay(1000);
+  }
+  for (char ii=0; ii<9; ii++){
+    lcd.drawRing(50, 40, 10, 20, 255, ii);
+    delay(1000);
+  }
+  delay(5000);
   Serial.println("step12");
   lcd.black();
   lcd.string("THE", 30, 10, 1000, 3096, 2, 2, 0);

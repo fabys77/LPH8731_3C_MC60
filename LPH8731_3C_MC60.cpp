@@ -828,6 +828,50 @@ void LPH8731_3C_MC60::fillCircle (char xcenter, char ycenter, char rad, int colo
 } // LPH8731_3C_MC60
 
 
+void LPH8731_3C_MC60::drawRing(char xcenter, char ycenter, char rad_int, char rad_ext, int color, char chunk)
+{
+  signed int tswitch, x1, y1;
+  char d, rad;
+  d = ycenter - xcenter;
+  for(rad=rad_ext; rad>=rad_int; rad--){
+    x1 = 0;
+    y1 = rad;
+    tswitch = 3 - 2 * rad;
+    while (x1 <= y1)
+    {
+       switch(chunk) {   
+       case 8:
+          setPixColor(xcenter - x1, ycenter - y1, color); //8
+       case 7:
+          setPixColor(ycenter - y1 - d, ycenter - x1, color);//7
+       case 6:
+          setPixColor(ycenter - y1 - d, ycenter + x1, color);//6
+       case 5:
+          setPixColor(xcenter - x1, ycenter + y1, color); //5
+       case 4:         
+          setPixColor(xcenter + x1, ycenter + y1, color); //4
+       case 3:
+          setPixColor(ycenter + y1 - d, ycenter + x1, color);//3
+       case 2:
+          setPixColor(ycenter + y1 - d, ycenter - x1, color); //2
+       case 1:
+          setPixColor(xcenter + x1, ycenter - y1, color); //1
+       case 0:
+       break;
+      }
+      if (tswitch < 0) tswitch += (4 * x1 + 6);
+      else
+      {
+        tswitch += (4 * (x1 - y1) + 10);
+        y1--;
+      }
+      x1++;
+    }
+  }
+} // LPH8731_3C_MC60
+
+
+
 //*******************************************************************
 //                     Нарисовать контуры треугольника.
 //*******************************************************************
